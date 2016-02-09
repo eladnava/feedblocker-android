@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/action_settings">
+    <PreferenceCategory
+        android:title="@string/feedblocker">
+        <CheckBoxPreference
+            android:key="@string/enable_pref"
+            android:title="@string/enable"
+            android:summary="@string/enable_desc"
+            android:defaultValue="@string/enable_default"/>
+        <CheckBoxPreference
+            android:key="@string/force_block_pref"
+            android:title="@string/force_block"
+            android:dependency="@string/enable_pref"
+            android:summary="@string/force_block_desc"
+            android:defaultValue="@string/force_block_default"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/facebook">
+        <CheckBoxPreference
+            android:key="@string/facebook_pref"
+            android:title="@string/facebook"
+            android:dependency="@string/enable_pref"
+            android:summary="@string/facebook_desc"
+            android:defaultValue="@string/facebook_pref_default"/>
+        <EditTextPreference
+            android:key="@string/facebook_limit_pref"
+            android:title="@string/facebook_limit"
+            android:inputType="number"
+            android:summary="@string/facebook_limit_desc"
+            android:defaultValue="@string/facebook_limit_default"
+            android:dependency="@string/enable_pref"/>
+    </PreferenceCategory>
+</PreferenceScreen>

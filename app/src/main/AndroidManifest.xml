@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.feedblocker"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Restart the Logcat Reader on Reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- FeedBlocker -->
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/feedblocker"
+        android:theme="@style/AppTheme">
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".activities.Main"
+            android:label="@string/feedblocker"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Settings Activity -->
+        <activity
+            android:name=".activities.Settings"
+            android:label="@string/action_settings"
+            android:parentActivityName=".activities.Main">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.Main"/>
+        </activity>
+
+        <!-- Popup Activity -->
+        <activity
+            android:name=".activities.Popup"
+            android:excludeFromRecents="true"
+            android:label="@string/feedblocker"
+            android:launchMode="singleInstance"
+            android:theme="@style/PopupDialog">
+        </activity>
+
+        <!-- Logcat Listener Service -->
+        <service android:name=".services.LogcatReader"/>
+
+        <!-- Boot Completed Receiver -->
+        <receiver android:name=".receivers.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

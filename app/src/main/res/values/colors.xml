@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material -->
+    <color name="primary">#3F51B5</color>
+    <color name="primaryDark">#283593</color>
+    <color name="accent">#ff4081</color>
+
+    <!-- Shades of Gray -->
+    <color name="lightGray">#dcdcdc</color>
+    <color name="lighterGray">#e9e9e9</color>
+
+    <!-- Other Colors -->
+    <color name="text">#464646</color>
+    <color name="white">#ffffff</color>
+    <color name="facebook">#3e4f71</color>
+</resources>

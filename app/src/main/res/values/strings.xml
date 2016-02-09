@@ -1,0 +1,65 @@
+<resources>
+    <!-- App -->
+    <string name="feedblocker">FeedBlocker</string>
+
+    <!-- Menu -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Main Activity -->
+    <string name="welcome">You\'re in Good Hands!</string>
+    <string name="welcome_desc">I\'ll remind you to exit the time-sucking Facebook feed automatically.</string>
+
+    <!-- No Root -->
+    <string name="no_root">Device Not Rooted</string>
+    <string name="no_root_desc">Your device is not rooted. You must root your device to use this application!</string>
+
+    <!-- No Root Access -->
+    <string name="no_root_access">No Root Access</string>
+    <string name="no_root_access_desc">You must provide root access to FeedBlocker so we can monitor your open applications.\n\nPlease open the SuperSU app and grant root access to FeedBlocker.</string>
+
+    <!-- Alert Popup -->
+    <string name="friendly_notice">You\'re wasting your time. Please kindly exit the app and do something useful for yourself.</string>
+
+    <!-- Toast Messages -->
+    <string name="ok_toast">Great choice! You rock.</string>
+
+    <!-- Ignore Messages (Random) -->
+    <string-array name="ignore_toasts">
+        <item>Please stop this. It\'s an addiction.</item>
+        <item>You\'re wasting precious time...</item>
+        <item>I\'m disappointed in you.</item>
+        <item>Don\'t you have anything better to do?</item>
+        <item>Stop it, you\'re out of control!</item>
+        <item>What do you think you\'re doing?!</item>
+    </string-array>
+
+    <!-- Dialog Buttons -->
+    <string name="ok">OK</string>
+    <string name="ignore">IGNORE</string>
+
+    <!-- Settings - Master Switch -->
+    <string name="enable">Master Switch</string>
+    <string name="enable_desc">Enable or disable the app</string>
+    <string name="enable_pref">enable</string>
+    <string name="enable_default">true</string>
+
+    <!-- Settings - Force Block -->
+    <string name="force_block">Force Block</string>
+    <string name="force_block_desc">Make it impossible to skip the feed blocker popup</string>
+    <string name="force_block_pref">force_block</string>
+    <string name="force_block_default">false</string>
+
+    <!-- Settings - Facebook -->
+    <string name="facebook">Facebook</string>
+    <string name="facebook_desc">Enable or disable Facebook feed blocking</string>
+    <string name="facebook_pref">facebook</string>
+    <string name="facebook_pref_default">true</string>
+
+    <!-- Settings - Facebook Limit -->
+    <string name="facebook_limit">Facebook Time Limit</string>
+    <string name="facebook_limit_desc">Display a friendly reminder X minutes after opening the Facebook feed</string>
+    <string name="facebook_limit_pref">facebook_limit</string>
+    <string name="facebook_limit_default">3</string>
+    <string name="app_name_extra">app</string>
+    <string name="time_remaining">FeedBlocker activates in %1$s</string>
+</resources>
