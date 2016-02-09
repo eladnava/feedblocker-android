@@ -1,5 +1,7 @@
 # FeedBlocker for Android [ROOT]
 
+[![Join the chat at https://gitter.im/eladnava/feedblocker-android](https://badges.gitter.im/eladnava/feedblocker-android.svg)](https://gitter.im/eladnava/feedblocker-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Are you spending too much time on feeds? Ever found yourself entranced by the time-sucking, endless Facebook News Feed, wasting valuable time on distractions?
 
 FeedBlocker is an Android app for **rooted devices** that limits your feed browsing time by displaying a friendly reminder to close the feed and do something productive for a change, after a configurable amount of time has passed.
