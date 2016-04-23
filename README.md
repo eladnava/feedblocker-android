@@ -37,7 +37,7 @@ Currently, FeedBlocker is not available on Google Play due to a possible Terms o
 
 That's it - FeedBlocker will activate automatically by displaying a popup over the feed when time runs out!
 
-### Feed Compatibility
+## Feed Compatibility
 
 Currently, only the Facebook feed is supported. However, it's relatively easy to support other feeds - create an issue and we'll discuss it!
 
