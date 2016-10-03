@@ -5,16 +5,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class SystemServices
-{
+public class SystemServices {
     private static AlarmManager mAlarmManager;
     private static SharedPreferences mSharedPreferences;
 
-    public static SharedPreferences getSharedPreferences(Context context)
-    {
+    public static SharedPreferences getSharedPreferences(Context context) {
         // First time?
-        if ( mSharedPreferences == null )
-        {
+        if (mSharedPreferences == null) {
             // Acquire system service
             mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         }
@@ -23,13 +20,11 @@ public class SystemServices
         return mSharedPreferences;
     }
 
-    public static AlarmManager getAlarmManager(Context context)
-    {
+    public static AlarmManager getAlarmManager(Context context) {
         // First time?
-        if ( mAlarmManager == null )
-        {
+        if (mAlarmManager == null) {
             // Acquire system service
-            mAlarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+            mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         }
 
         // Return cached instance

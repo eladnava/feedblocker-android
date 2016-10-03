@@ -8,19 +8,15 @@ import com.feedblocker.activities.Main;
 import com.feedblocker.services.LogcatReader;
 import com.stericson.RootShell.RootShell;
 
-public class ServiceManager
-{
-    public static boolean isServiceRunning(Class<?> serviceClass, Context context)
-    {
+public class ServiceManager {
+    public static boolean isServiceRunning(Class<?> serviceClass, Context context) {
         // Get system-wide activity manager
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
 
         // Traverse active services
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE))
-        {
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             // Target service is running?
-            if (serviceClass.getName().equals(service.service.getClassName()))
-            {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
                 // Service is definitely running
                 return true;
             }
@@ -30,23 +26,19 @@ public class ServiceManager
         return false;
     }
 
-    public static void startLogcatReaderService(Context context)
-    {
+    public static void startLogcatReaderService(Context context) {
         // App disabled?
-        if (!AppPreferences.isAppEnabled(context))
-        {
+        if (!AppPreferences.isAppEnabled(context)) {
             return;
         }
 
         // Service is already running? (check before verifying root access, otherwise isAccessGiven() hangs due to bug in RootShell)
-        if (isServiceRunning(LogcatReader.class, context))
-        {
+        if (isServiceRunning(LogcatReader.class, context)) {
             return;
         }
 
         // No root access (yet)?
-        if (!RootShell.isAccessGiven())
-        {
+        if (!RootShell.isAccessGiven()) {
             return;
         }
 

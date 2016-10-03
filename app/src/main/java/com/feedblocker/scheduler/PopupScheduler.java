@@ -15,10 +15,8 @@ import com.feedblocker.model.FeedApplication;
 import com.feedblocker.utils.AppPreferences;
 import com.feedblocker.utils.SystemServices;
 
-public class PopupScheduler
-{
-    public static void schedulePopupDisplayIntent(FeedApplication app, Context context)
-    {
+public class PopupScheduler {
+    public static void schedulePopupDisplayIntent(FeedApplication app, Context context) {
         // Cancel previously-scheduled popup intents
         cancelCurrentPopupDisplayIntents(app, context);
 
@@ -26,8 +24,7 @@ public class PopupScheduler
         int timeLimitMinutes = 10;
 
         // Set app-specific time limit (can't use switch-case with instanceof, unfortunately, so we'll have to do with "if" statement(s))
-        if (app instanceof Facebook)
-        {
+        if (app instanceof Facebook) {
             // Get the time limit configured in app settings
             timeLimitMinutes = AppPreferences.getFacebookTimeLimitMinutes(context);
         }
@@ -48,14 +45,12 @@ public class PopupScheduler
         Log.d(Logging.TAG, "Scheduled popup in " + timeLimitString);
     }
 
-    public static void cancelCurrentPopupDisplayIntents(FeedApplication app, Context context)
-    {
+    public static void cancelCurrentPopupDisplayIntents(FeedApplication app, Context context) {
         // Clear all previously-scheduled popup intents
         SystemServices.getAlarmManager(context).cancel(getPopupPendingIntent(app, context));
     }
 
-    private static PendingIntent getPopupPendingIntent(FeedApplication app, Context context)
-    {
+    private static PendingIntent getPopupPendingIntent(FeedApplication app, Context context) {
         // Create new popup intent
         Intent popupIntent = new Intent();
 

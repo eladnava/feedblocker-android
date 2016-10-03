@@ -18,11 +18,9 @@ import com.stericson.RootShell.execution.Command;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogcatReader extends Service
-{
+public class LogcatReader extends Service {
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
 
         // Log the event
@@ -30,11 +28,9 @@ public class LogcatReader extends Service
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId)
-    {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         // Make sure app is enabled and root access given
-        if (!AppPreferences.isAppEnabled(this) || ! RootShell.isAccessGiven())
-        {
+        if (!AppPreferences.isAppEnabled(this) || !RootShell.isAccessGiven()) {
             // Kill the service
             stopSelf();
 
@@ -42,13 +38,10 @@ public class LogcatReader extends Service
             return START_NOT_STICKY;
         }
 
-        try
-        {
+        try {
             // Start monitoring the logcat
             monitorLogcat();
-        }
-        catch (Exception exc)
-        {
+        } catch (Exception exc) {
             // Log errors to logcat
             Log.e(Logging.TAG, "LogcatReader error", exc);
         }
@@ -57,8 +50,7 @@ public class LogcatReader extends Service
         return START_STICKY;
     }
 
-    private void monitorLogcat() throws Exception
-    {
+    private void monitorLogcat() throws Exception {
         // Write to log
         Log.d(Logging.TAG, "Monitoring the logcat");
 
@@ -66,11 +58,9 @@ public class LogcatReader extends Service
         int id = 0, timeout = 0;
 
         // Prepare the logcat reading command
-        Command logcatCommand = new Command(id, timeout, RootCommands.LOGCAT_READ_COMMAND)
-        {
+        Command logcatCommand = new Command(id, timeout, RootCommands.LOGCAT_READ_COMMAND) {
             @Override
-            public void commandOutput(int id, String line)
-            {
+            public void commandOutput(int id, String line) {
                 // Check for an app open/close log and schedule the popup accordingly
                 handleNewLogLine(line);
 
@@ -79,15 +69,13 @@ public class LogcatReader extends Service
             }
 
             @Override
-            public void commandTerminated(int id, String error)
-            {
+            public void commandTerminated(int id, String error) {
                 // Log error
                 Log.e(Logging.TAG, "Logcat command terminated with error: " + error);
             }
 
             @Override
-            public void commandCompleted(int id, int exitCode)
-            {
+            public void commandCompleted(int id, int exitCode) {
                 // Log completion
                 Log.d(Logging.TAG, "Logcat command completed");
             }
@@ -98,24 +86,20 @@ public class LogcatReader extends Service
         RootShell.getShell(true).add(logcatCommand);
     }
 
-    private void handleNewLogLine(String log)
-    {
+    private void handleNewLogLine(String log) {
         // Prepare a generic list of apps with a feed
         List<FeedApplication> apps = new ArrayList<>();
 
         // Monitor Facebook?
-        if (AppPreferences.isFacebookFeedBlockingEnabled(this))
-        {
+        if (AppPreferences.isFacebookFeedBlockingEnabled(this)) {
             // Add it to list of apps to monitor
             apps.add(new Facebook());
         }
 
         // Traverse feed apps
-        for (FeedApplication app : apps)
-        {
+        for (FeedApplication app : apps) {
             // App resumed?
-            if (logMatchesIndicator(log, app.getAppResumeLogIndicators()))
-            {
+            if (logMatchesIndicator(log, app.getAppResumeLogIndicators())) {
                 // Log app resumed
                 Log.d(Logging.TAG, app.getClass().getSimpleName() + " resumed");
 
@@ -124,8 +108,7 @@ public class LogcatReader extends Service
             }
 
             // App paused?
-            if (logMatchesIndicator(log, app.getAppPauseLogIndicators()))
-            {
+            if (logMatchesIndicator(log, app.getAppPauseLogIndicators())) {
                 // Log app paused
                 Log.d(Logging.TAG, app.getClass().getSimpleName() + " paused");
 
@@ -135,14 +118,11 @@ public class LogcatReader extends Service
         }
     }
 
-    private boolean logMatchesIndicator(String log, String[] indicators)
-    {
+    private boolean logMatchesIndicator(String log, String[] indicators) {
         // Traverse indicators
-        for (String indicator : indicators)
-        {
+        for (String indicator : indicators) {
             // Log contains a part of the indicator?
-            if (log.contains(indicator))
-            {
+            if (log.contains(indicator)) {
                 // We're good
                 return true;
             }
@@ -153,8 +133,7 @@ public class LogcatReader extends Service
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         // Write to log
         Log.d(Logging.TAG, "LogcatReader destroyed");
 
@@ -164,8 +143,7 @@ public class LogcatReader extends Service
 
     @Nullable
     @Override
-    public IBinder onBind(Intent intent)
-    {
+    public IBinder onBind(Intent intent) {
         // Don't allow binding to this service
         return null;
     }

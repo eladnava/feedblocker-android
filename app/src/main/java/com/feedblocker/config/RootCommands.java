@@ -1,7 +1,6 @@
 package com.feedblocker.config;
 
-public class RootCommands
-{
+public class RootCommands {
     // Shell command to get root privileges manually (for ProcessExecutor)
     public static final String GAIN_ROOT_COMMAND = "su";
 

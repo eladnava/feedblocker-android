@@ -4,10 +4,8 @@ import com.feedblocker.config.RootCommands;
 
 import java.io.DataOutputStream;
 
-public class ProcessExecutor
-{
-    public static void runRootCommand(String cmd) throws Exception
-    {
+public class ProcessExecutor {
+    public static void runRootCommand(String cmd) throws Exception {
         // Get "su" root privileges (assumes we checked for RootShell.isAccessGiven() before calling this method)
         Process process = Runtime.getRuntime().exec(RootCommands.GAIN_ROOT_COMMAND);
 

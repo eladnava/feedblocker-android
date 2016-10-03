@@ -8,14 +8,11 @@ import android.util.Log;
 import com.feedblocker.config.Logging;
 import com.feedblocker.utils.ServiceManager;
 
-public class BootReceiver extends BroadcastReceiver
-{
+public class BootReceiver extends BroadcastReceiver {
     @Override
-    public void onReceive(Context context, Intent intent)
-    {
+    public void onReceive(Context context, Intent intent) {
         // Make sure the right intent was provided
-        if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED))
-        {
+        if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
             // Log phone startup
             Log.d(Logging.TAG, "Boot completed");
 

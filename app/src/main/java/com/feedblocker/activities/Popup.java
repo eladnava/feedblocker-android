@@ -19,15 +19,13 @@ import com.feedblocker.utils.ui.LayoutUtil;
 
 import java.util.Random;
 
-public class Popup extends AppCompatActivity
-{
+public class Popup extends AppCompatActivity {
     Button mOkay;
     Button mIgnore;
     FeedApplication mApp;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set up activity UI
@@ -40,29 +38,23 @@ public class Popup extends AppCompatActivity
         Log.d(Logging.TAG, "Displayed popup");
     }
 
-    private void initializeFeedApplication()
-    {
+    private void initializeFeedApplication() {
         // Get app name from intent extras
         String app = getIntent().getStringExtra(getString(R.string.app_name_extra));
 
-        try
-        {
+        try {
             // Instantiate it via reflection
             mApp = (FeedApplication) Class.forName(app).newInstance();
-        }
-        catch(Exception exc)
-        {
+        } catch (Exception exc) {
             // Log error
             Log.e(Logging.TAG, "Failed to instantiate class by name: " + app, exc);
         }
     }
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         // Force blocking enabled?
-        if (AppPreferences.isForcedBlockingEnabled(this))
-        {
+        if (AppPreferences.isForcedBlockingEnabled(this)) {
             // Don't permit back press (force close feed)
             return;
         }
@@ -71,18 +63,16 @@ public class Popup extends AppCompatActivity
         super.onBackPressed();
     }
 
-    private void initializeUI()
-    {
+    private void initializeUI() {
         // Inflate popup activity layout
         setContentView(R.layout.activity_popup);
 
         // Button views
-        mOkay = (Button)findViewById(R.id.okay);
-        mIgnore = (Button)findViewById(R.id.ignore);
+        mOkay = (Button) findViewById(R.id.okay);
+        mIgnore = (Button) findViewById(R.id.ignore);
 
         // Force blocking enabled?
-        if (AppPreferences.isForcedBlockingEnabled(this))
-        {
+        if (AppPreferences.isForcedBlockingEnabled(this)) {
             // No ignore button for you!
             mIgnore.setVisibility(View.GONE);
         }
@@ -91,33 +81,27 @@ public class Popup extends AppCompatActivity
         initializeListeners();
     }
 
-    private void initializeListeners()
-    {
+    private void initializeListeners() {
         // "Okay" button click
-        mOkay.setOnClickListener(new View.OnClickListener()
-        {
+        mOkay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // Run okay button logic
                 okayPressed();
             }
         });
 
         // "Ignore" button click
-        mIgnore.setOnClickListener(new View.OnClickListener()
-        {
+        mIgnore.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 // Run ignore button logic
                 ignorePressed();
             }
         });
     }
 
-    private void okayPressed()
-    {
+    private void okayPressed() {
         // Show friendly toast to congratulate the user
         Toast.makeText(Popup.this, R.string.ok_toast, Toast.LENGTH_LONG).show();
 
@@ -125,19 +109,16 @@ public class Popup extends AppCompatActivity
         finish();
 
         // Schedule back button press (wait for the popup to close first)
-        new Handler().postDelayed(new Runnable()
-        {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 // Close current activity by fake-pressing "back" button (elegant solution)
                 FakeKeyEvents.sendBackButtonKeyEvent();
             }
         }, 300);
     }
 
-    private void ignorePressed()
-    {
+    private void ignorePressed() {
         // Get all ignore toast messages
         String[] messages = getResources().getStringArray(R.array.ignore_toasts);
 
@@ -155,8 +136,7 @@ public class Popup extends AppCompatActivity
     }
 
     @Override
-    public void onAttachedToWindow()
-    {
+    public void onAttachedToWindow() {
         super.onAttachedToWindow();
 
         // Get window object
@@ -167,8 +147,7 @@ public class Popup extends AppCompatActivity
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
 
         // Fade out gradually

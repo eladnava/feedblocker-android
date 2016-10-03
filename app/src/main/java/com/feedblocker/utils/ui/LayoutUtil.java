@@ -5,10 +5,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 
-public class LayoutUtil
-{
-    public static void centerPopupInParentWindow(Window window)
-    {
+public class LayoutUtil {
+    public static void centerPopupInParentWindow(Window window) {
         // Get window's root view
         FrameLayout rootView = (FrameLayout) window.getDecorView();
 

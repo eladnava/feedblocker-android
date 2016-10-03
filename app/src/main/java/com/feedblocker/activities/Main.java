@@ -14,30 +14,25 @@ import com.feedblocker.services.LogcatReader;
 import com.feedblocker.utils.ServiceManager;
 import com.stericson.RootShell.RootShell;
 
-public class Main extends AppCompatActivity
-{
+public class Main extends AppCompatActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set up activity UI
         initializeUI();
 
         // Make sure service is not running yet (verifyRootAccessAvailable() will hang if we're already monitoring the logcat due to a bug in RootShell)
-        if (!ServiceManager.isServiceRunning(LogcatReader.class, this))
-        {
+        if (!ServiceManager.isServiceRunning(LogcatReader.class, this)) {
             // Make sure we have root access (display dialog otherwise)
-            if (verifyRootAccessAvailable())
-            {
+            if (verifyRootAccessAvailable()) {
                 // Re-start the logcat reader service (if not already running)
                 ServiceManager.startLogcatReaderService(this);
             }
         }
     }
 
-    private void initializeUI()
-    {
+    private void initializeUI() {
         // Inflate main activity layout
         setContentView(R.layout.activity_main);
 
@@ -48,21 +43,17 @@ public class Main extends AppCompatActivity
         setSupportActionBar(toolbar);
     }
 
-    private boolean verifyRootAccessAvailable()
-    {
+    private boolean verifyRootAccessAvailable() {
         // No "su" binary?
-        if (!RootShell.isRootAvailable())
-        {
+        if (!RootShell.isRootAvailable()) {
             // Show fatal error dialog
             new AlertDialog.Builder(this)
                     .setTitle(R.string.no_root)
                     .setMessage(R.string.no_root_desc)
                     .setPositiveButton(R.string.ok, null)
-                    .setOnDismissListener(new DialogInterface.OnDismissListener()
-                    {
+                    .setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
-                        public void onDismiss(DialogInterface dialog)
-                        {
+                        public void onDismiss(DialogInterface dialog) {
                             // End the activity
                             finish();
                         }
@@ -74,18 +65,15 @@ public class Main extends AppCompatActivity
         }
 
         // No root access given?
-        if (!RootShell.isAccessGiven())
-        {
+        if (!RootShell.isAccessGiven()) {
             // Show fatal error dialog
             new AlertDialog.Builder(this)
                     .setTitle(R.string.no_root_access)
                     .setMessage(R.string.no_root_access_desc)
                     .setPositiveButton(R.string.ok, null)
-                    .setOnDismissListener(new DialogInterface.OnDismissListener()
-                    {
+                    .setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
-                        public void onDismiss(DialogInterface dialog)
-                        {
+                        public void onDismiss(DialogInterface dialog) {
                             // End the activity
                             finish();
                         }
@@ -101,25 +89,21 @@ public class Main extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu - this adds items to the action bar if it is present
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    private void viewSettings()
-    {
+    private void viewSettings() {
         // Start the settings activity
         startActivity(new Intent(Main.this, Settings.class));
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks by ID
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             // Settings
             case R.id.action_settings:
                 viewSettings();

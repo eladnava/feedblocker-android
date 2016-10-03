@@ -2,19 +2,16 @@ package com.feedblocker.integrations;
 
 import com.feedblocker.model.FeedApplication;
 
-public class Facebook extends FeedApplication
-{
+public class Facebook extends FeedApplication {
     @Override
-    public String[] getAppResumeLogIndicators()
-    {
+    public String[] getAppResumeLogIndicators() {
         return new String[]{
                 "LocalFbBroadcastManager: Called registerBroadcastReceiver twice"
         };
     }
 
     @Override
-    public String[] getAppPauseLogIndicators()
-    {
+    public String[] getAppPauseLogIndicators() {
         return new String[]{
                 "moveTaskToBack: TaskRecord",
                 "START u0 {act=com.android.systemui.recents.SHOW_RECENTS",
