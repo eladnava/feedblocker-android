@@ -114,6 +114,9 @@ public class Popup extends AppCompatActivity {
             public void run() {
                 // Close feed activity by PID
                 ProcessManager.killSystemProcess(mApp.getAppProcessName());
+
+                // Cancel any outstanding popups
+                PopupScheduler.cancelCurrentPopupDisplayIntents(mApp, Popup.this);
             }
         }, 300);
     }
