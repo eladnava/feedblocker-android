@@ -57,9 +57,9 @@
 
     <!-- Settings - Facebook Limit -->
     <string name="facebook_limit">Facebook Time Limit</string>
-    <string name="facebook_limit_desc">Display a friendly reminder X minutes after opening the Facebook feed</string>
-    <string name="facebook_limit_pref">facebook_limit</string>
-    <string name="facebook_limit_default">3</string>
+    <string name="facebook_limit_desc">Display a friendly reminder X seconds after opening the Facebook feed</string>
+    <string name="facebook_limit_pref">facebook_limit_seconds</string>
+    <string name="facebook_limit_default">60</string>
     <string name="app_name_extra">app</string>
     <string name="time_remaining">FeedBlocker activates in %1$s</string>
 </resources>

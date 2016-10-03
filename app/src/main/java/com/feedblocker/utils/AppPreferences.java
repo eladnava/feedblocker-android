@@ -20,8 +20,8 @@ public class AppPreferences {
         return SystemServices.getSharedPreferences(context).getBoolean(context.getString(R.string.facebook_pref), context.getString(R.string.facebook_pref_default) == "true");
     }
 
-    public static int getFacebookTimeLimitMinutes(Context context) {
-        // Return time limit in minutes from SharedPreferences
+    public static int getFacebookTimeLimitSeconds(Context context) {
+        // Return time limit in seconds from SharedPreferences
         return Integer.parseInt(SystemServices.getSharedPreferences(context).getString(context.getString(R.string.facebook_limit_pref), context.getString(R.string.facebook_limit_default)));
     }
 }

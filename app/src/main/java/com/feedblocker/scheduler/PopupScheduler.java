@@ -20,23 +20,23 @@ public class PopupScheduler {
         // Cancel previously-scheduled popup intents
         cancelCurrentPopupDisplayIntents(app, context);
 
-        // By default, 10 minutes is the feed browsing time limit
-        int timeLimitMinutes = 10;
+        // By default, 60 seconds is the feed browsing time limit
+        int timeLimitSeconds = 60;
 
         // Set app-specific time limit (can't use switch-case with instanceof, unfortunately, so we'll have to do with "if" statement(s))
         if (app instanceof Facebook) {
             // Get the time limit configured in app settings
-            timeLimitMinutes = AppPreferences.getFacebookTimeLimitMinutes(context);
+            timeLimitSeconds = AppPreferences.getFacebookTimeLimitSeconds(context);
         }
 
         // Define when to show the popup (convert time limit to millis)
-        long triggerAtTimestamp = System.currentTimeMillis() + (timeLimitMinutes * 60 * 1000);
+        long triggerAtTimestamp = System.currentTimeMillis() + (timeLimitSeconds * 1000);
 
         // Schedule the popup activity by setting its trigger timestamp and pending intent
         SystemServices.getAlarmManager(context).set(AlarmManager.RTC, triggerAtTimestamp, getPopupPendingIntent(app, context));
 
         // Prepare user-friendly time limit countdown message
-        String timeLimitString = timeLimitMinutes + " minute" + ((timeLimitMinutes != 1) ? "s" : "");
+        String timeLimitString = timeLimitSeconds + " second" + ((timeLimitSeconds != 1) ? "s" : "");
 
         // Show friendly toast with countdown
         Toast.makeText(context, context.getString(R.string.time_remaining, timeLimitString), Toast.LENGTH_SHORT).show();
