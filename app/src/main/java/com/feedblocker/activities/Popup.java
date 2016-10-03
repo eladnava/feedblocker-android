@@ -14,7 +14,7 @@ import com.feedblocker.config.Logging;
 import com.feedblocker.model.FeedApplication;
 import com.feedblocker.scheduler.PopupScheduler;
 import com.feedblocker.utils.AppPreferences;
-import com.feedblocker.utils.FakeKeyEvents;
+import com.feedblocker.utils.ProcessManager;
 import com.feedblocker.utils.ui.LayoutUtil;
 
 import java.util.Random;
@@ -108,12 +108,12 @@ public class Popup extends AppCompatActivity {
         // Close popup
         finish();
 
-        // Schedule back button press (wait for the popup to close first)
+        // Schedule close feed activity (wait for the popup to close first)
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Close current activity by fake-pressing "back" button (elegant solution)
-                FakeKeyEvents.sendBackButtonKeyEvent();
+                // Close feed activity by PID
+                ProcessManager.killSystemProcess(mApp.getAppProcessName());
             }
         }, 300);
     }

@@ -19,4 +19,9 @@ public class Facebook extends FeedApplication {
 
         };
     }
+
+    @Override
+    public String getAppProcessName() {
+        return "{facebook.katana}";
+    }
 }

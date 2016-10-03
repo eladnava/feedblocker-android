@@ -1,12 +1,12 @@
 package com.feedblocker.config;
 
 public class RootCommands {
-    // Shell command to get root privileges manually (for ProcessExecutor)
+    // Shell command to get root privileges manually
     public static final String GAIN_ROOT_COMMAND = "su";
 
     // Shell command to read logcat indefinitely (get last log first using "-T 1" and then read only futuristic ones)
     public static final String LOGCAT_READ_COMMAND = "logcat -T 1";
 
-    // Shell command to fake a back button press in order to close the currently focused activity (key code 4 is back button)
-    public static final String BACK_BUTTON_PRESS_COMMAND = "input keyevent 4";
+    // Shell command to kill a process by name in order to close the feed activity
+    public static final String KILL_PROCESS_BY_NAME = "ps | grep %s | grep -v grep | awk '{print $1}' | xargs kill";
 }
