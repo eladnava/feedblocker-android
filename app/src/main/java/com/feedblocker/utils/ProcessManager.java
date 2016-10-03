@@ -8,7 +8,7 @@ import com.feedblocker.config.Logging;
 public class ProcessManager {
     public static void killSystemProcess(String processName) {
         // Log process kill
-        Log.d(Logging.TAG, "Killing process by name:" + processName);
+        Log.d(Logging.TAG, "Killing process by name: " + processName);
 
         try {
             // Execute the root command manually (workaround for the concurrent command freeze bug in RootShell)
