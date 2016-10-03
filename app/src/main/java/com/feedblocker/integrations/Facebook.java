@@ -7,18 +7,19 @@ public class Facebook extends FeedApplication
     @Override
     public String[] getAppResumeLogIndicators()
     {
-        // AppStateLogger to the rescue
         return new String[]{
-                "Activity activity.FbMainTabActivity changed state to Started"
+                "LocalFbBroadcastManager: Called registerBroadcastReceiver twice"
         };
     }
 
     @Override
     public String[] getAppPauseLogIndicators()
     {
-        // AppStateLogger to the rescue
         return new String[]{
-                "Activity activity.FbMainTabActivity changed state to Paused"
+                "moveTaskToBack: TaskRecord",
+                "START u0 {act=com.android.systemui.recents.SHOW_RECENTS",
+                "START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME]"
+
         };
     }
 }
