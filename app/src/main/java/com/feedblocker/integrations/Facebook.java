@@ -6,7 +6,7 @@ public class Facebook extends FeedApplication {
     @Override
     public String[] getAppResumeLogIndicators() {
         return new String[]{
-                "LocalFbBroadcastManager: Called registerBroadcastReceiver twice"
+                "START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.facebook.katana/.LoginActivity"
         };
     }
 
