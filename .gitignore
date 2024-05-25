@@ -4,6 +4,7 @@
 /build
 /captures
 
+.idea/caches/*
 .idea/workspace.xml
 .idea/libraries
 .idea/dictionaries
