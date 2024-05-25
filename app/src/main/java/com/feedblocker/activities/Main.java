@@ -2,6 +2,7 @@ package com.feedblocker.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,12 @@ public class Main extends AppCompatActivity {
                 // Re-start the logcat reader service (if not already running)
                 ServiceManager.startLogcatReaderService(this);
             }
+        }
+
+        // Check if we already have permission to draw over other apps
+        if (!android.provider.Settings.canDrawOverlays(this)) {
+            // Bring user to relevant settings activity to grant the app overlay permission
+            startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
         }
     }
 

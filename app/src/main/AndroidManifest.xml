@@ -4,6 +4,7 @@
 
     <!-- Restart the Logcat Reader on Reboot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <!-- FeedBlocker -->
     <application
@@ -35,6 +36,7 @@
         <!-- Popup Activity -->
         <activity
             android:name=".activities.Popup"
+            android:taskAffinity=".popup"
             android:excludeFromRecents="true"
             android:label="@string/feedblocker"
             android:launchMode="singleInstance"
