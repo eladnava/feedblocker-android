@@ -11,6 +11,7 @@ import com.feedblocker.R;
 import com.feedblocker.activities.Popup;
 import com.feedblocker.config.Logging;
 import com.feedblocker.integrations.Facebook;
+import com.feedblocker.integrations.Instagram;
 import com.feedblocker.model.FeedApplication;
 import com.feedblocker.utils.AppPreferences;
 import com.feedblocker.utils.SystemServices;
@@ -27,6 +28,12 @@ public class PopupScheduler {
         if (app instanceof Facebook) {
             // Get the time limit configured in app settings
             timeLimitSeconds = AppPreferences.getFacebookTimeLimitSeconds(context);
+        }
+
+        // Set app-specific time limit (can't use switch-case with instanceof, unfortunately, so we'll have to do with "if" statement(s))
+        if (app instanceof Instagram) {
+            // Get the time limit configured in app settings
+            timeLimitSeconds = AppPreferences.getInstagramTimeLimitSeconds(context);
         }
 
         // Define when to show the popup (convert time limit to millis)
@@ -66,6 +73,6 @@ public class PopupScheduler {
         popupIntent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
 
         // Convert to pending intent for use with AlarmManager
-        return PendingIntent.getActivity(context, 0, popupIntent, 0);
+        return PendingIntent.getActivity(context, 0, popupIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }

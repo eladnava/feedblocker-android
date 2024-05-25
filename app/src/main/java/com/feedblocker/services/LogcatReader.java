@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import com.feedblocker.config.RootCommands;
 import com.feedblocker.config.Logging;
 import com.feedblocker.integrations.Facebook;
+import com.feedblocker.integrations.Instagram;
 import com.feedblocker.model.FeedApplication;
 import com.feedblocker.scheduler.PopupScheduler;
 import com.feedblocker.utils.AppPreferences;
@@ -96,6 +97,12 @@ public class LogcatReader extends Service {
             apps.add(new Facebook());
         }
 
+        // Monitor Instagram?
+        if (AppPreferences.isInstagramFeedBlockingEnabled(this)) {
+            // Add it to list of apps to monitor
+            apps.add(new Instagram());
+        }
+
         // Traverse feed apps
         for (FeedApplication app : apps) {
             // App resumed?
@@ -118,12 +125,27 @@ public class LogcatReader extends Service {
         }
     }
 
-    private boolean logMatchesIndicator(String log, String[] indicators) {
+    private boolean logMatchesIndicator(String log, Object[] indicators) {
         // Traverse indicators
-        for (String indicator : indicators) {
-            // Log contains a part of the indicator?
-            if (log.contains(indicator)) {
-                // We're good
+        for (Object indicator : indicators) {
+            if (indicator instanceof String) {
+                // Log contains a part of the indicator?
+                if (log.contains((String)indicator)) {
+                    // We're good
+                    return true;
+                }
+            }
+            else if (indicator instanceof String[]) {
+                // Traverse indicators
+                for (String subIndicator : (String[])indicator) {
+                    // Log contains a part of the indicator?
+                    if (!log.contains(subIndicator)) {
+                        // No match
+                        return false;
+                    }
+                }
+
+                // We have a match
                 return true;
             }
         }

@@ -49,6 +49,10 @@
     <string name="force_block_pref">force_block</string>
     <string name="force_block_default">false</string>
 
+    <!-- General -->
+    <string name="app_name_extra">app</string>
+    <string name="time_remaining">FeedBlocker activates in %1$s</string>
+
     <!-- Settings - Facebook -->
     <string name="facebook">Facebook</string>
     <string name="facebook_desc">Enable or disable Facebook feed blocking</string>
@@ -60,6 +64,16 @@
     <string name="facebook_limit_desc">Display a friendly reminder X seconds after opening the Facebook feed</string>
     <string name="facebook_limit_pref">facebook_limit_seconds</string>
     <string name="facebook_limit_default">60</string>
-    <string name="app_name_extra">app</string>
-    <string name="time_remaining">FeedBlocker activates in %1$s</string>
+
+    <!-- Settings - Instagram -->
+    <string name="instagram">Instagram</string>
+    <string name="instagram_desc">Enable or disable Instagram feed blocking</string>
+    <string name="instagram_pref">instagram</string>
+    <string name="instagram_pref_default">true</string>
+
+    <!-- Settings - Instagram Limit -->
+    <string name="instagram_limit">Instagram Time Limit</string>
+    <string name="instagram_limit_desc">Display a friendly reminder X seconds after opening the Instagram feed</string>
+    <string name="instagram_limit_pref">instagram_limit_seconds</string>
+    <string name="instagram_limit_default">60</string>
 </resources>

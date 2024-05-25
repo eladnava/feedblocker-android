@@ -32,4 +32,20 @@
             android:defaultValue="@string/facebook_limit_default"
             android:dependency="@string/enable_pref"/>
     </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/instagram">
+        <CheckBoxPreference
+            android:key="@string/instagram_pref"
+            android:title="@string/instagram"
+            android:dependency="@string/enable_pref"
+            android:summary="@string/instagram_desc"
+            android:defaultValue="@string/instagram_pref_default"/>
+        <EditTextPreference
+            android:key="@string/instagram_limit_pref"
+            android:title="@string/instagram_limit"
+            android:inputType="number"
+            android:summary="@string/instagram_limit_desc"
+            android:defaultValue="@string/instagram_limit_default"
+            android:dependency="@string/enable_pref"/>
+    </PreferenceCategory>
 </PreferenceScreen>

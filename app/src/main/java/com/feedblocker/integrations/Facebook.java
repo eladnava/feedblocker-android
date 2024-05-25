@@ -4,16 +4,16 @@ import com.feedblocker.model.FeedApplication;
 
 public class Facebook extends FeedApplication {
     @Override
-    public String[] getAppResumeLogIndicators() {
-        return new String[]{
+    public Object[] getAppResumeLogIndicators() {
+        return new Object[]{
                 "Displayed com.facebook.katana/.LoginActivity",
                 "onResume: com.facebook.katana.activity.FbMainTabActivity"
         };
     }
 
     @Override
-    public String[] getAppPauseLogIndicators() {
-        return new String[]{
+    public Object[] getAppPauseLogIndicators() {
+        return new Object[]{
                 "onPause: com.facebook.katana.activity.FbMainTabActivity"
         };
     }
