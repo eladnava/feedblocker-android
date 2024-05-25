@@ -6,22 +6,20 @@ public class Facebook extends FeedApplication {
     @Override
     public String[] getAppResumeLogIndicators() {
         return new String[]{
-                "LocalFbBroadcastManager: Called registerBroadcastReceiver twice"
+                "Displayed com.facebook.katana/.LoginActivity",
+                "onResume: com.facebook.katana.activity.FbMainTabActivity"
         };
     }
 
     @Override
     public String[] getAppPauseLogIndicators() {
         return new String[]{
-                "moveTaskToBack: TaskRecord",
-                "START u0 {act=com.android.systemui.recents.SHOW_RECENTS",
-                "START u0 {act=android.intent.action.MAIN cat=[android.intent.category.HOME]"
-
+                "onPause: com.facebook.katana.activity.FbMainTabActivity"
         };
     }
 
     @Override
     public String getAppProcessName() {
-        return "{facebook.katana}";
+        return "com.facebook.katana";
     }
 }
