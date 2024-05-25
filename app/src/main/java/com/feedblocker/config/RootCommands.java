@@ -8,5 +8,5 @@ public class RootCommands {
     public static final String LOGCAT_READ_COMMAND = "logcat -T 1";
 
     // Shell command to kill a process by name in order to close the feed activity
-    public static final String KILL_PROCESS_BY_NAME = "ps | grep %s | grep -v grep | awk '{print $1}' | xargs kill";
+    public static final String KILL_PROCESS_BY_NAME = "am force-stop %s";
 }
