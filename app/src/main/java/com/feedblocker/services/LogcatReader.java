@@ -136,17 +136,22 @@ public class LogcatReader extends Service {
                 }
             }
             else if (indicator instanceof String[]) {
+                // Match until proven otherwise
+                boolean match = true;
+
                 // Traverse indicators
                 for (String subIndicator : (String[])indicator) {
                     // Log contains a part of the indicator?
                     if (!log.contains(subIndicator)) {
                         // No match
-                        return false;
+                        match = false;
                     }
                 }
 
-                // We have a match
-                return true;
+                // We have a match?
+                if (match) {
+                    return true;
+                }
             }
         }
 
