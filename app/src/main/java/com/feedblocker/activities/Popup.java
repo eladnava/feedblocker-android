@@ -102,21 +102,21 @@ public class Popup extends AppCompatActivity {
     }
 
     private void okayPressed() {
-        // Show friendly toast to congratulate the user
-        Toast.makeText(Popup.this, R.string.ok_toast, Toast.LENGTH_LONG).show();
-
         // Close popup
         finish();
 
-        // Schedule close feed activity (wait for the popup to close first)
+        // Close feed activity by PID
+        ProcessManager.killSystemProcess(mApp.getAppProcessName());
+
+        // Delay execution
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Close feed activity by PID
-                ProcessManager.killSystemProcess(mApp.getAppProcessName());
-
                 // Cancel any outstanding popups
                 PopupScheduler.cancelCurrentPopupDisplayIntents(mApp, Popup.this);
+
+                // Show friendly toast to congratulate the user
+                Toast.makeText(Popup.this, R.string.ok_toast, Toast.LENGTH_LONG).show();
             }
         }, 300);
     }

@@ -6,7 +6,6 @@ public class Facebook extends FeedApplication {
     @Override
     public Object[] getAppResumeLogIndicators() {
         return new Object[]{
-                "Displayed com.facebook.katana/.LoginActivity",
                 "onResume: com.facebook.katana.activity.FbMainTabActivity"
         };
     }
