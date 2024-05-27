@@ -7,7 +7,7 @@ public class Instagram extends FeedApplication {
     public Object[] getAppResumeLogIndicators() {
         return new Object[]{
                 new String[]{"Displayed", "com.instagram.android/com.instagram.mainactivity.InstagramMainActivity"},
-                new String[]{"START u0", "com.instagram.android/.activity.MainTabActivity"}
+                new String[]{"START u0", "com.instagram.android"}
         };
     }
 
