@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/eladnava/feedblocker-android](https://badges.gitter.im/eladnava/feedblocker-android.svg)](https://gitter.im/eladnava/feedblocker-android?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Are you spending too much time on feeds? Ever found yourself entranced by the time-sucking, endless Facebook News Feed, wasting valuable time on distractions?
+Are you spending too much time on feeds? Ever found yourself entranced by the time-sucking, endless Facebook and Instagram feeds, wasting valuable time on distractions? Ever notice you've been doomscrolling for a half an hour without even being aware of it?
 
 FeedBlocker is an Android app for **rooted devices** that limits your feed browsing time by displaying a friendly reminder to close the feed and do something productive for a change, after a configurable amount of time has passed.
 
@@ -39,7 +39,7 @@ That's it - FeedBlocker will activate automatically by displaying a popup over t
 
 ## Feed Compatibility
 
-Currently, only the Facebook feed is supported. However, it's relatively easy to support other feeds - create an issue and we'll discuss it!
+Currently, only Facebook and Instagram are supported. However, it's relatively easy to support other feeds - create an issue and we'll discuss it!
 
 ## Contributing
 
